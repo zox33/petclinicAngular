@@ -53,7 +53,6 @@ import lombok.Setter;
 @Table(name = "pets")
 @Builder
 @Setter
-//(value = AccessLevel.PACKAGE)
 @Getter
 public class Pet extends NamedEntity{
 

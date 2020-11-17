@@ -8,6 +8,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class OwnerDto {
 
+		private Integer id;	
 		private String firstName;
 		private String lastName;
 	    private String address;

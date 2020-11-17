@@ -1,6 +1,10 @@
 package org.springframework.samples.petclinic.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.samples.petclinic.dto.OwnerDto;
 import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.stereotype.Repository;
 
@@ -23,6 +27,10 @@ public interface OwnerRepository extends JpaRepository<Owner,Integer>{
 //	//Lista de Owners ordenada port apellido
 //	public List<Owner> findByLastnameOrderByLastnameAsc(String lastname);
 //	
-
 	
+
+	@Query("select new org.springframework.samples.petclinic.dto.OwnerDto(p.id, p.firstName, p.lastName, p.address, p.city, p.telephone) from Owner p")
+	List<OwnerDto> findAllOwners();
+
+
 }
