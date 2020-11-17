@@ -1,0 +1,12 @@
+<div class="container jumbotron jumbotron-fluid">
+<h1>Buscador</h1>
+<form class="form-inline">
+    <div class="form-group">
+        <label for="buscador"></label>
+        <input class="form-control" type="text" name="buscador" [(ngModel)]="texto"/>
+        <input class="btn btn-primary" value="{{labelButton}}" type="submit" (click)="buscar()"/>
+    </div>
+</form>
+<!--<p>{{resultado}}</p>-->
+<!--<p>{{texto}}</p>-->
+</div>

@@ -1,0 +1,34 @@
+<div class="container container-fluid">
+    <table>
+        <thead>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Fecha de nacimiento</th>
+        <th>Tipo</th>
+        <th>Propietario</th>
+        </thead>
+        <tbody>
+        <tr  *ngFor="let pet of Pets">
+            <td >
+                {{pet.id}}
+        </td>
+            <td>
+            {{pet.name}}
+        </td>
+        <td>
+            {{pet.birthDate}}
+        </td>
+        <td>
+            {{pet.type}}
+        </td>
+        <td>
+            {{pet.owner}}
+        </td>
+        <td>
+            <button type="button" (click) = borrar(pet)>Eliminar</button>
+        </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+  

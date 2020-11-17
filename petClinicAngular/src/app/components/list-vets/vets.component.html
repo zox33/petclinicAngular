@@ -1,0 +1,21 @@
+<div class="container container-fluid">
+
+    <button class="btn btn-primary" (click)="toggle()">{{mostrar ? 'Ocultar' : 'Mostrar'}}</button>
+    <table *ngIf="mostrar">
+      <thead>
+        <th>Nombre</th>
+        <th>Apellido</th>
+    </thead>
+        <tbody>
+        <tr  *ngFor="let vet of allVets" >
+          <td >
+                  {{vet.firstName}}
+        </td>
+          <td>
+            {{vet.lastName}}
+      </td>
+          </tr>
+        </tbody>
+      </table>
+    
+</div>

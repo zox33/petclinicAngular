@@ -1,0 +1,63 @@
+<div class="container container-fluid">
+    <form class="form-horizontal" #formOwner="ngForm" (ngSubmit)="onSubmit(formOwner)">
+
+        <div class="form-group">
+            <label for="firstName">Firts Name</label>
+            <input type="text" class="form-control" #firstName="ngModel" name="firstName"
+            [(ngModel)]="ownerAdd.firstName" required>
+            <div  *ngIf="firstName.invalid  && (firstName.dirty || firstName.touched)" 
+            class="alert alert-danger">
+                Escriba su nombre
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" class="form-control" #lastName="ngModel" name="lastName"
+            [(ngModel)]="ownerAdd.lastName" required>
+            <div   *ngIf="lastName.invalid && (lastName.dirty || lastName.touched) " 
+            class="alert alert-danger">
+                Escriba su apellido
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="address">Address</label>
+            <input type="text" class="form-control" #address="ngModel" name="address"
+            [(ngModel)]="ownerAdd.address" required>
+            <div   *ngIf="address.invalid  && (address.dirty || address.touched)" 
+            class="alert alert-danger">
+                Escriba su dirección
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="city">City</label>
+            <input type="text" class="form-control" #city="ngModel" name="city"
+            [(ngModel)]="ownerAdd.city" required>
+            <div   *ngIf="city.invalid && (city.dirty || city.touched)"
+            class="alert alert-danger">
+                Escriba la ciudad donde reside
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="telephone">Telephone</label>
+            <input type="tel" class="form-control" #telephone="ngModel" name="telephone"
+            [(ngModel)]="ownerAdd.telephone" required>
+            <div  *ngIf="telephone.invalid && (telephone.dirty || telephone.touched)"
+            class="alert alert-danger">
+                Escriba su telefono
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div>
+                <button class="btn btn-primary" [disabled]="!formOwner.valid" type="submit">Add Owner</button>
+            </div>
+
+        </div>
+
+</form>
+</div>

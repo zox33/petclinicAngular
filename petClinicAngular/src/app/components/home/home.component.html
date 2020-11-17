@@ -1,0 +1,16 @@
+<div class="container container-fluid">
+    <app-search [labelButton]="Buscar" (buscadorEvent)="getSearch($event)"></app-search>
+      <p>{{mensajeBuscado}}</p>
+      <hr/>
+      <h1>Probando NgIf y NgStyle</h1>
+     <div *ngIf="title">
+        <p [ngStyle]="{'font-size.px': numFont,
+                        'line-height.%': spacing}">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore placeat delectus impedit, ducimus dolore aut sit? Praesentium obcaecati voluptates accusamus cupiditate beatae vero commodi, similique, quibusdam perspiciatis nostrum repellat! Cupiditate.
+        </p>
+      </div>
+      <hr/>
+      <h1>Componente Lista</h1>
+
+<app-lista></app-lista>
+</div>
