@@ -21,3 +21,12 @@ export interface Owner {
     telephone: string;
     pets: Pet[];
 }
+
+export interface OwnerList {
+    id: number;
+    firstName: string;
+    lastName: string;
+    address: string;
+    city: string;
+    telephone: string;
+}

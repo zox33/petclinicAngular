@@ -20,6 +20,8 @@ import { ListPetComponent } from './components/list-pet/list-pet.component';
 import { EditPetComponent } from './components/edit-pet/edit-pet.component';
 import { AddPetComponent } from './components/add-pet/add-pet.component';
 
+import { ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +43,8 @@ import { AddPetComponent } from './components/add-pet/add-pet.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [OwnerServiceService, VetService],
   bootstrap: [AppComponent]

@@ -13,3 +13,10 @@ export interface PetDtoList {
     type: string;
     owner: string;
 }
+
+export interface NewPetDto {
+    name: string;
+    birthDate: string;
+    type: number;
+    owner: number;
+}
