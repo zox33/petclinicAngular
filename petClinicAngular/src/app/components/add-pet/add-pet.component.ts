@@ -21,7 +21,6 @@ export class AddPetComponent implements OnInit {
     }
   }
   onSubmit(formPet:NgForm){
-    this.pet.id == formPet.value.id;
     this.pet.name == formPet.value.name;
     this.pet.birthDate == formPet.value.birthDate;
     this.pet.typeId == formPet.value.typeId;

@@ -19,13 +19,13 @@ export class PetService {
     const headers = new HttpHeaders( );
     headers.append('Content-Type','application/json');
     headers.append('Accept','application/json');
-    return this.http.post<Pet>(this.Url,pet, {headers} );
+    return this.http.post<Pet>(this.Url+"/add",pet, {headers} );
   }
-  editPets(){
-    /*const headers = new HttpHeaders( );
+  editPets(pet:Pet){
+    const headers = new HttpHeaders( );
     headers.append('Content-Type','application/json');
     headers.append('Accept','application/json');
-    return this.http.post<Pet>(this.Url+"/api/owners",pet, {headers} );*/
+    return this.http.post<Pet>(this.Url,pet, {headers} );
   }
   deletePets(pet:Pet){
     const headers = new HttpHeaders( );

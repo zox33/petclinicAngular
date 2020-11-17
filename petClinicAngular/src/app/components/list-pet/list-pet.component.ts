@@ -10,6 +10,7 @@ import { PetService } from 'src/app/services/pet.service';
 })
 export class ListPetComponent implements OnInit {
   public Pets : PetDtoList[];
+  public mostrar: boolean = true;
   constructor(private petService:PetService) { }
 
 
@@ -21,6 +22,9 @@ export class ListPetComponent implements OnInit {
 
    borrar(pet:Pet){
       this.petService.deletePets(pet);
+   }
+   toggle(){
+    this.mostrar = !this.mostrar;
    }
 
 }
