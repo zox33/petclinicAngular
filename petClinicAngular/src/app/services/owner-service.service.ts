@@ -8,13 +8,14 @@ import { Owner } from '../models/owner.interface'
 })
 export class OwnerServiceService {
 
-  private Url:string="http://localhost:9966/petclinic"
+  private Url:string="http://localhost:9004/owner/"
   constructor(private http:HttpClient) {  }
 
   getOwners(): Observable<Owner[]>{
-    return this.http.get<Owner[]>(this.Url+"/api/owners/")
+    return this.http.get<Owner[]>(this.Url)
   }
 
+  
   addOwner(owner:Owner): Observable<Owner>{
     const headers = new HttpHeaders( );
     headers.append('Content-Type','application/json');

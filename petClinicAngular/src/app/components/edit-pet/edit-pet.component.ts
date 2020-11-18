@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { PetService } from 'src/app/services/pet.service';
 
@@ -8,13 +8,12 @@ import { PetService } from 'src/app/services/pet.service';
   styleUrls: ['./edit-pet.component.scss']
 })
 export class EditPetComponent implements OnInit {
-  @Input() idM:number;
   public pet;
   constructor(private petService:PetService) { }
 
   ngOnInit(): void {
     this.pet = {
-      id:this.idM,
+      id:"",
       name:"",
       birthDate:"",
       typeId:"",
@@ -27,7 +26,7 @@ export class EditPetComponent implements OnInit {
     this.pet.birthDate == formPet.value.birthDate;
     this.pet.typeId == formPet.value.typeId;
     this.pet.ownerId == formPet.value.ownerId;
-    this.petService.editPets(this.pet);
+    this.petService.addPets(this.pet);
 
   }
 

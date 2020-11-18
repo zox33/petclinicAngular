@@ -19,7 +19,9 @@ import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 
 /**
@@ -32,6 +34,8 @@ import lombok.NoArgsConstructor;
 @MappedSuperclass
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 public class NamedEntity extends BaseEntity {
 
     @Column(name = "name")

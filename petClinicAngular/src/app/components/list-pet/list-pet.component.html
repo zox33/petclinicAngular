@@ -1,4 +1,4 @@
-<div class="container container-fluid" *ngIf="mostrar">
+<div class="container container-fluid">
     <table>
         <thead>
         <th>Id</th>
@@ -25,15 +25,10 @@
             {{pet.owner}}
         </td>
         <td>
-            <button type="button" (click) = toggle()>Editar</button>
-        </td>
-        <td>
             <button type="button" (click) = borrar(pet)>Eliminar</button>
         </td>
             </tr>
         </tbody>
     </table>
 </div>
-<app-edit-pet idM="5" *ngIf="!mostrar"></app-edit-pet>
-
   

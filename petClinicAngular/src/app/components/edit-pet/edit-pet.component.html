@@ -4,10 +4,10 @@
         <div class="form-group">
             <label for="id">Id</label>
             <input type="text" class="form-control" #id="ngModel" name="id"
-            [(ngModel)]="pet.id" required readonly>
+            [(ngModel)]="pet.id" required>
             <div  *ngIf="id.invalid  && (id.dirty || id.touched)" 
             class="alert alert-danger">
-                ID
+                Escriba el id de la mascota
             </div>
         </div>
 
@@ -54,9 +54,10 @@
 
         <div class="form-group">
             <div>
-                <button class="btn btn-primary" [disabled]="!formPet.valid" type="submit">Editar Mascota</button>
+                <button class="btn btn-primary" [disabled]="!formPet.valid" type="submit">Añadir Mascota</button>
             </div>
 
         </div>
+
 </form>
 </div>

@@ -3,6 +3,8 @@
  */
 package org.springframework.samples.petclinic.controllers;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,7 @@ import org.springframework.samples.petclinic.dto.converter.NewPetConverter;
 import org.springframework.samples.petclinic.model.Pet;
 import org.springframework.samples.petclinic.services.PetService;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,12 +31,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author victor
  *
  */
+@CrossOrigin(origins = "http://localhost:4200")
 @Controller
 @RequestMapping("/pets")
 public class PetController {
+	List<PetDtoList>lista = new ArrayList<>();
 
 	@Autowired
 	PetService ps;
+	
 	
 	@Autowired
 	NewPetConverter cv;
@@ -43,7 +49,7 @@ public class PetController {
 	public ResponseEntity<List<PetDtoList>> getPets() {
 		return new ResponseEntity<List<PetDtoList>>(ps.findAllPets(), HttpStatus.OK);
 	}
-	
+		
 	@PostMapping("/add")
 	public ResponseEntity<PetDto> addPet(@RequestBody NewPetDto petDto) {
 		ps.save(cv.convertPetDtoToPet(petDto));
