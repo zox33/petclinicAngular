@@ -15,7 +15,6 @@
  */
 package org.springframework.samples.petclinic.model;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
@@ -34,6 +33,8 @@ import org.springframework.beans.support.MutableSortDefinition;
 import org.springframework.beans.support.PropertyComparator;
 
 import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Simple JavaBean domain object representing a veterinarian.
@@ -45,8 +46,9 @@ import lombok.Builder;
  */
 @Entity
 @Table(name = "vets")
+@Getter @Setter
 @Builder
-public class Vet extends Person implements Serializable {
+public class Vet extends Person {
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "vet_specialties", joinColumns = @JoinColumn(name = "vet_id"), inverseJoinColumns = @JoinColumn(name = "specialty_id"))
@@ -84,7 +86,14 @@ public class Vet extends Person implements Serializable {
 		return "Vet firstName=" + firstName + ", lastName=" + lastName + ", id=" + id+",[specialties=" + specialties + "] "
 				+ "]";
 	}
-    
-    
 
+    @Builder(builderMethodName = "vetBuilder")
+	public Vet(String firstName, String lastName, Set<Specialty> specialties) {
+		super(firstName, lastName);
+		this.specialties = specialties;
+	}
+
+	public Vet() {
+	}  
+    
 }
