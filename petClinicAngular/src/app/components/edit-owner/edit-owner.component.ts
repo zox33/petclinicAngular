@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Owner, OwnerAdd } from 'src/app/models/owner.interface';
 import { OwnerServiceService } from 'src/app/services/owner-service.service';
 
 
@@ -10,33 +11,40 @@ import { OwnerServiceService } from 'src/app/services/owner-service.service';
   styleUrls: ['./edit-owner.component.scss']
 })
 export class EditOwnerComponent implements OnInit {
-  public owner;
-  constructor(private route: ActivatedRoute, private ownerService:OwnerServiceService,private router:Router) { }
+  owner:OwnerAdd;
   public idL;
+  public idV;
+  //formulario
+  form: FormGroup = new FormGroup ({
+    id:new FormControl(),
+    firstName: new FormControl()
+    ,lastName: new FormControl()
+    ,address: new FormControl()
+    ,city: new FormControl()
+    ,telephone: new FormControl()
+    });
+
+  constructor(private ownerService: OwnerServiceService, private formBuilder: FormBuilder, private router:Router,private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.idL = this.route.queryParams.subscribe(params =>{
-      this.owner = {
-        id:params['idE'],
-        firstName:"",
-        lastName:"",
-        address:"",
-        city:"",
-        telephone:""
-      }
+      this.idV = params['idE']
     });
-    
+    this.form = this.formBuilder.group({
+      id:[this.idV,Validators.required],
+      firstName: ["",Validators.required],
+      lastName: ["",Validators.required],
+      address: ["",Validators.required],
+      city: ["",Validators.required],
+      telephone: ["",Validators.required],
+    });
   }
-  onSubmit(form:NgForm){
-    this.owner.id == form.value.id;
-    this.owner.firstName == form.value.firstName;
-    this.owner.lastName == form.value.lastName;
-    this.owner.address == form.value.address;
-    this.owner.city == form.value.city;
-    this.owner.telephone == form.value.telephone;
-    this.ownerService.editOwner(this.owner);
-    this.router.navigate(["/owners"]);
 
+  onSubmit(formulario:FormGroup):void{
+    this.owner = new OwnerAdd(this.form.get('id').value,this.form.get('firstName').value,this.form.get('lastName').value,this.form.get('address').value,this.form.get('city').value,this.form.get('telephone').value)
+    this.ownerService.editOwner(this.owner).subscribe(add=>{
+        this.router.navigate(['/owners']);
+    });
   }
 
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Owner } from '../models/owner.interface'
+import { Owner, OwnerDto } from '../models/owner.interface'
 
 @Injectable({
   providedIn: 'root'
@@ -16,11 +16,11 @@ export class OwnerServiceService {
   }
 
   
-  addOwner(owner:Owner): Observable<Owner>{
+  addOwner(owner:OwnerDto): Observable<Owner>{
     const headers = new HttpHeaders( );
     headers.append('Content-Type','application/json');
     headers.append('Accept','application/json');
-    return this.http.post<Owner>(this.Url+"/add",owner, {headers} );
+    return this.http.post<Owner>(this.Url+"add",owner, {headers} );
   }
 
   getOwner(id:string): Observable<Owner>{

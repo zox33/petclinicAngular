@@ -32,7 +32,7 @@ export class PetService {
     const headers = new HttpHeaders( );
     headers.append('Content-Type','application/json');
     headers.append('Accept','application/json');
-    return this.http.post<TypePet>(this.Url+"add",pet, {headers} );
+    return this.http.post<TypePet>(this.UrlTypes+"add",pet, {headers} );
   }
   editPets(pet: PetDtoList){
     const headers = new HttpHeaders( );
@@ -52,6 +52,6 @@ export class PetService {
     headers.append('Content-Type','application/json');
     headers.append('Accept','application/json');
     let id: string  = petType.id.toString();
-    return this.http.delete<TypePet>(this.Url+id);
+    return this.http.delete<TypePet>(this.UrlTypes+id);
   }
 }
