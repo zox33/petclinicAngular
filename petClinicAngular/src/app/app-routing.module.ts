@@ -7,6 +7,7 @@ import { AddPetComponent } from './components/add-pet/add-pet.component';
 import { ListOwnerComponent } from './components/list-owner/list-owner.component';
 import { ListPetComponent } from './components/list-pet/list-pet.component';
 import { ListTypeComponent } from './list-type/list-type.component';
+import { EditPetComponent } from './components/edit-pet/edit-pet.component';
 
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'addPet', component: AddPetComponent },
   { path: 'typePet', component: ListTypeComponent },
   { path: 'addTypePet', component: AddTypeComponent },
+  { path: 'editPet', component: EditPetComponent },
   { path: 'owners', component: ListOwnerComponent},
   { path: 'addOwner', component: AddOwnerComponent }
 ];

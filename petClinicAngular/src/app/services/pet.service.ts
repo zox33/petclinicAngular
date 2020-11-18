@@ -34,11 +34,11 @@ export class PetService {
     headers.append('Accept','application/json');
     return this.http.post<TypePet>(this.Url+"add",pet, {headers} );
   }
-  editPets(){
-    /*const headers = new HttpHeaders( );
+  editPets(pet: NewPetDto){
+    const headers = new HttpHeaders( );
     headers.append('Content-Type','application/json');
     headers.append('Accept','application/json');
-    return this.http.post<Pet>(this.Url+"/api/owners",pet, {headers} );*/
+    return this.http.post<Pet>(this.Url+"/api/owners",pet, {headers} );
   }
   deletePets(pet:Pet){
     const headers = new HttpHeaders( );

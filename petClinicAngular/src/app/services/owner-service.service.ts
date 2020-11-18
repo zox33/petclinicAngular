@@ -33,6 +33,12 @@ export class OwnerServiceService {
     let id: string  = owner.id.toString();
     return this.http.delete<Owner>(this.Url+id);
   }
+  editOwner(owner:Owner){
+    const headers = new HttpHeaders( );
+    headers.append('Content-Type','application/json');
+    headers.append('Accept','application/json');
+    return this.http.post<Owner>(this.Url+"/api/owners",owner, {headers} );
+  }
 
 
 }

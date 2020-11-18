@@ -4,9 +4,9 @@
         <div class="form-group">
             <label for="id">Id</label>
             <input type="text" class="form-control" #id="ngModel" name="id"
-            [(ngModel)]="pet.id" required>
+            [(ngModel)]="pet.id" required readonly>
             <div  *ngIf="id.invalid  && (id.dirty || id.touched)" 
-            class="alert alert-danger">
+            class="alert alert-danger" >
                 Escriba el id de la mascota
             </div>
         </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NewPetDto } from 'src/app/models/pet.interface';
 import { TypePet } from 'src/app/models/type-pets.interface';
 import { PetService } from 'src/app/services/pet.service';
 

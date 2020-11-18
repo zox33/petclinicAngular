@@ -26,5 +26,8 @@ export class ListOwnerComponent implements OnInit {
       }
       );
    }
+   editar(owner:Owner){
+    this.router.navigate(["/editPet"],{queryParams: {idE:owner.id}});
+}
 
 }

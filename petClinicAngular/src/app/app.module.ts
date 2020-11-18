@@ -25,6 +25,7 @@ import { PetService } from './services/pet.service';
 import { ListTypeComponent } from './list-type/list-type.component';
 import { AddTypeComponent } from './components/add-type/add-type.component';
 import { AddOwnerComponent } from './components/add-owner/add-owner.component';
+import { EditOwnerComponent } from './components/edit-owner/edit-owner.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { AddOwnerComponent } from './components/add-owner/add-owner.component';
     ListTypeComponent,
     AddTypeComponent,
     AddOwnerComponent,
+    EditOwnerComponent,
   ],
   imports: [
     BrowserModule,
