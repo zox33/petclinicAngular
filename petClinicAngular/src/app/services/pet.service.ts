@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable, Type } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Pet } from '../models/owner.interface';
 import { NewPetDto, PetDtoList } from '../models/pet.interface';
@@ -22,17 +22,17 @@ export class PetService {
     return this.http.get<TypePet[]>(this.UrlTypes);
   }
 
-  addPets(pet: NewPetDto){
+  addPet(pet: NewPetDto){
     const headers = new HttpHeaders( );
     headers.append('Content-Type','application/json');
     headers.append('Accept','application/json');
-    return this.http.post<Pet>(this.Url,pet, {headers} );
+    return this.http.post<Pet>(this.Url+"add",pet, {headers} );
   }
-  addTypePet(type:TypePet){
+  addTypePet(pet: TypePet){
     const headers = new HttpHeaders( );
     headers.append('Content-Type','application/json');
     headers.append('Accept','application/json');
-    return this.http.post<TypePet>(this.UrlTypes,type, {headers} );
+    return this.http.post<TypePet>(this.Url+"add",pet, {headers} );
   }
   editPets(){
     /*const headers = new HttpHeaders( );
@@ -47,11 +47,11 @@ export class PetService {
     let id: string  = pet.id.toString();
     return this.http.delete<Pet>(this.Url+id);
   }
-  deleteTypePets(type:TypePet){
+  deletePetType(petType:TypePet){
     const headers = new HttpHeaders( );
     headers.append('Content-Type','application/json');
     headers.append('Accept','application/json');
-    let id: string  = type.id.toString();
-    return this.http.delete<TypePet>(this.UrlTypes+id);
+    let id: string  = petType.id.toString();
+    return this.http.delete<TypePet>(this.Url+id);
   }
 }

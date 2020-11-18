@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { TypePet } from '../models/type-pets.interface';
-import { PetService } from '../services/pet.service';
+import { TypePet } from 'src/app/models/type-pets.interface';
+import { PetService } from 'src/app/services/pet.service';
 
 
 @Component({

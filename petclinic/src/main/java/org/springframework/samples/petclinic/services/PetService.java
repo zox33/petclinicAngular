@@ -15,7 +15,8 @@ public class PetService{
 	PetRepository pr;
 	
 	public List<PetDtoList> findAllPets(){
-		return pr.findPets();
+		List<PetDtoList> aux = pr.findPets();
+		return aux;
 	}
 		
 	public void save (Pet p) {

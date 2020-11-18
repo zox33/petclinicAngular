@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Owner } from 'src/app/models/owner.interface';
+import { Owner, OwnerList } from 'src/app/models/owner.interface';
 import { OwnerServiceService } from 'src/app/services/owner-service.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
@@ -9,37 +9,22 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
   styleUrls: ['./list-owner.component.scss']
 })
 export class ListOwnerComponent implements OnInit {
-  public allOwners:Owner[];
-  public mostrar:boolean;
-  constructor( private ownerService:OwnerServiceService, private router:Router){}
+  public Owners : OwnerList[];
+  constructor(private ownerService:OwnerServiceService, private router:Router){}
 
   ngOnInit(): void {
-    this.mostrar=true
-    this.getAllOwners();
-
+    this.ownerService.getOwners().subscribe(owner=>{
+      this.Owners = owner;
+    });
   }
 
-  getAllOwners(){
-    this.ownerService.getOwners().subscribe(owners=>{
-      this.allOwners=owners;
-    })
-  }
-
-  ocultar(){
-    this.mostrar=false;
-  }
-
-  toggle() {
-    this.mostrar = !this.mostrar;
-  }
   
-  mostrarList(){
-    this.mostrar=true;
-  }
 
-  onSelect(owner: Owner){
-    this.router.navigate(['/owners',owner.id]);
-  }
-
+   borrar(owner:Owner){
+     this.ownerService.deleteOwner(owner).subscribe(p=>{
+        window.location.reload();
+      }
+      );
+   }
 
 }

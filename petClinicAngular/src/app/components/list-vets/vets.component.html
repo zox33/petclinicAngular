@@ -1,5 +1,6 @@
 <div class="container container-fluid">
 
+    <button class="btn btn-primary" (click)="toggle()">{{mostrar ? 'Ocultar' : 'Mostrar'}}</button>
     <table *ngIf="mostrar">
       <thead>
         <th>Nombre</th>
@@ -13,9 +14,6 @@
           <td>
             {{vet.lastName}}
       </td>
-      <td>
-        <button type="button" (click) = borrar(pet)>Eliminar</button>
-     </td>
           </tr>
         </tbody>
       </table>

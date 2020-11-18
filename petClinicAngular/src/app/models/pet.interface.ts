@@ -14,9 +14,24 @@ export interface PetDtoList {
     owner: string;
 }
 
-export interface NewPetDto {
+/*export interface NewPetDtoInter {
     name: string;
     birthDate: string;
     type: number;
     owner: number;
+}*/
+
+export class NewPetDto {
+    name: string;
+    birthDate: string;
+    type: number;
+    owner: number;
+    constructor(name:string, birthDate:string, type:number, owner:number) {
+       this.name=name;
+       this.birthDate=birthDate;
+       this.type=type;
+       this.owner=owner;
+    }
 }
+
+

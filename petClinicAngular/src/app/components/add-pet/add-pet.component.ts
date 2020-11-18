@@ -1,39 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { PetService } from 'src/app/services/pet.service';
-
-@Component({
-  selector: 'app-add-pet',
-  templateUrl: './add-pet.component.html',
-  styleUrls: ['./add-pet.component.scss']
-})
-export class AddPetComponent implements OnInit {
-  public pet;
-  constructor(private petService:PetService) { }
-
-  ngOnInit(): void {
-    this.pet = {
-      id:"",
-      name:"",
-      birthDate:"",
-      typeId:"",
-      ownerId:""
-    }
-  }
-  onSubmit(formPet:NgForm){
-    this.pet.id == formPet.value.id;
-    this.pet.name == formPet.value.name;
-    this.pet.birthDate == formPet.value.birthDate;
-    this.pet.typeId == formPet.value.typeId;
-    this.pet.ownerId == formPet.value.ownerId;
-    this.petService.addPets(this.pet);
-
-  }
-
-}
-
-
-/*import { Component, OnInit } from '@angular/core';
 import { NgForm, Validators } from '@angular/forms';
 import { PetService } from 'src/app/services/pet.service';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
@@ -65,23 +30,17 @@ export class AddPetComponent implements OnInit {
     this.getTypes();
     this.getOwners();
     this.form = this.formBuilder.group({
-      nombre: ["",Validators.required],
-      birthDate: Date(),
-      typeId: Number(),
-      ownerId: Number(),
+      name: ["",Validators.required],
+      birthDate: [Date(), Validators.required],
+      typeId: [2, Validators.required],
+      ownerId: [1,Validators.required],
     });
   }
 
   onSubmit(formulario:FormGroup):void{
-    this.pet.name == formulario.get('nombre').value;
-    this.pet.birthDate == formulario.get('birthDate').value;
-    this.pet.type == formulario.get('typeId').value;
-    this.pet.owner == formulario.get('ownerId').value;
-
-    this.petService.addPets(this.pet).subscribe(add=>{
-        "añadido"
-        this.router.navigate(['/pets']);
-
+    this.pet = new NewPetDto(this.form.get('name').value, this.form.get('birthDate').value, this.form.get('typeId').value,this.form.get('ownerId').value)
+    this.petService.addPet(this.pet).subscribe(add=>{
+        this.router.navigate(['/']);
     });
   }
 
@@ -98,4 +57,3 @@ export class AddPetComponent implements OnInit {
   }
 
 }
-*/

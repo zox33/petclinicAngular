@@ -1,28 +1,38 @@
-<!--<button class="btn btn-primary" (click)="ocultar()">Ocultar</button>
-<button class="btn btn-secundary" (click)="mostrarList()">Mostrar</button>-->
-
 <div class="container container-fluid">
-
-<button class="btn btn-primary" (click)="toggle()">{{mostrar ? 'Ocultar' : 'Mostrar'}}</button>
-<table *ngIf="mostrar">
-  <thead>
-    <th>Nombre</th>
-    <th>Apellido</th>
-    <th>Ciudad</th>
-</thead>
-    <tbody>
-    <tr  *ngFor="let owner of allOwners" (click)="onSelect(owner)" >
-      <td >
-              {{owner.firstName}}
+  <table>
+      <thead>
+      <th>Id</th>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Direccion</th>
+      <th>Ciudad</th>
+      <th>Telefono</th>
+      </thead>
+      <tbody>
+      <tr  *ngFor="let owner of Owners">
+          <td >
+              {{owner.id}}
+      </td>
+          <td>
+          {{owner.firstName}}
+      </td>
+      <td>
+          {{owner.lastName}}
+      </td>
+      <td>
+          {{owner.address}}
+      </td>
+      <td>
+          {{owner.city}}
+      </td>
+      <td>
+        {{owner.telephone}}
     </td>
       <td>
-        {{owner.lastName}}
-  </td>
-  <td>
-    {{owner.city}}
-  </td>
-      </tr>
-    </tbody>
+          <button type="button" (click) = borrar(owner)>Eliminar</button>
+      </td>
+          </tr>
+      </tbody>
   </table>
-
 </div>
+
