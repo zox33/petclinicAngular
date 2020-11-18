@@ -30,5 +30,8 @@ export class ListPetComponent implements OnInit {
    editar(pet:Pet){
       this.router.navigate(["/editPet"],{queryParams: {idE:pet.id}});
  }
+    aniadir(){
+      this.router.navigate(["/addPet"]);
+    }
 
 }

@@ -29,5 +29,8 @@ export class ListTypeComponent implements OnInit {
       }
       );
    }
+   aniadir(){
+    this.router.navigate(["/addTypePet"]);
+  }
 
 }
