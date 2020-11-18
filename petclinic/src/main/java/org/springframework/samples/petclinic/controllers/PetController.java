@@ -49,8 +49,8 @@ public class PetController {
 		
 	@PostMapping("/add")
 	public ResponseEntity<PetDto> addPet(@RequestBody NewPetDto petDto) {
-		ps.save(cv.convertPetDtoToPet(petDto));
-		return new ResponseEntity<PetDto>(cv.convertPetToPetDto(cv.convertPetDtoToPet(petDto)),HttpStatus.CREATED);
+		ps.save(cv.convertNewPetDtoToPet(petDto));
+		return new ResponseEntity<PetDto>(cv.convertPetToPetDto(cv.convertNewPetDtoToPet(petDto)),HttpStatus.CREATED);
 	}
 	
 	@PutMapping("/{id}")

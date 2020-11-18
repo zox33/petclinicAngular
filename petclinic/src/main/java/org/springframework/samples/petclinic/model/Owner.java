@@ -28,10 +28,9 @@ import javax.validation.constraints.Digits;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.core.style.ToStringCreator;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Simple JavaBean domain object representing an owner.
@@ -43,9 +42,8 @@ import lombok.NoArgsConstructor;
  */
 @Entity
 @Table(name = "owners")
-@Data
+@Setter @Getter
 @Builder
-@AllArgsConstructor @NoArgsConstructor
 public class Owner extends Person {
     /**
 	 * 
@@ -82,5 +80,21 @@ public class Owner extends Person {
             .toString();
     }
 
+    @Builder(builderMethodName = "ownerBuilder")
+	public Owner(String firtsName, String LastName ,String address, String city, String telephone, Set<Pet> pets) {
+		super(firtsName, LastName);
+		this.address = address;
+		this.city = city;
+		this.telephone = telephone;
+		this.pets = pets;
+	}
+
+
+	public Owner() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+    
 
 }

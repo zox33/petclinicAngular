@@ -7,5 +7,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TypeRepository extends JpaRepository<PetType,Integer>{
 
+	PetType findByNameAllIgnoreCase(String name);
 
 }

@@ -22,5 +22,12 @@ public class OwnerService {
 		return ownerRepo.findAllOwners();
 	}
 	
+	public void deleteOwner(Integer id){
+		ownerRepo.delete(id);
+	}
+	
+	public Owner save(Owner ow){
+		return ownerRepo.save(ow);
+	}
 
 }

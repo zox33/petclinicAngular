@@ -21,5 +21,16 @@ public class TypeService {
 		return tpRepo.findAll();
 	}
 	
+	public PetType saveType (PetType p){
+		return tpRepo.save(p);
+	}
+	
+	public PetType findByName (String name){
+		return tpRepo.findByNameAllIgnoreCase(name);
+	}
+	
+	public void deleteType (Integer id){
+		tpRepo.delete(id);
+	}
 
 }

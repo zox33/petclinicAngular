@@ -32,6 +32,6 @@ public interface PetRepository extends JpaRepository<Pet,Integer>{
 
 	@Query("select new org.springframework.samples.petclinic.dto.PetDtoList(p.id, p.name, p.birthDate, p.type.name, p.owner.firstName) from Pet p")
 	List<PetDtoList> findPets();
-
+	
 	
 }

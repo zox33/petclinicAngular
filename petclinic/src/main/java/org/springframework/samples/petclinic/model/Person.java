@@ -20,7 +20,10 @@ import javax.persistence.MappedSuperclass;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-import lombok.Builder;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 /**
  * Simple JavaBean domain object representing an person.
@@ -28,6 +31,10 @@ import lombok.Builder;
  * @author Ken Krebs
  */
 @MappedSuperclass
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class Person extends BaseEntity {
 
     @Column(name = "first_name")

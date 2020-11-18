@@ -18,6 +18,7 @@ package org.springframework.samples.petclinic.model;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -28,6 +29,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@Builder
 @Table(name = "types")
 public class PetType extends NamedEntity {
 	
@@ -35,7 +37,8 @@ public class PetType extends NamedEntity {
 	public PetType() {
 		
 	}
-
+	
+    @Builder(builderMethodName = "petTypeBuilder")
 	public PetType(String name) {
 		super(name);
 		// TODO Auto-generated constructor stub
