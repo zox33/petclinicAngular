@@ -12,7 +12,7 @@ export interface Pet {
     visits: any[];
 }
 
-export interface Owner {
+export class Owner {
     id: number;
     firstName: string;
     lastName: string;
@@ -20,6 +20,12 @@ export interface Owner {
     city: string;
     telephone: string;
     pets: Pet[];
+    constructor(firstName:string, lastName:string, address:string, city:string, telephone:string) {
+        this.firstName=firstName;
+        this.lastName=lastName;
+        this.address=address;
+        this.telephone=telephone;
+     }
 }
 
 export interface OwnerList {

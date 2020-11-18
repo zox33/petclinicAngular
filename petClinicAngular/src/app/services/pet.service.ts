@@ -28,11 +28,17 @@ export class PetService {
     headers.append('Accept','application/json');
     return this.http.post<Pet>(this.Url+"add",pet, {headers} );
   }
-  editPets(){
-    /*const headers = new HttpHeaders( );
+  addTypePet(pet: TypePet){
+    const headers = new HttpHeaders( );
     headers.append('Content-Type','application/json');
     headers.append('Accept','application/json');
-    return this.http.post<Pet>(this.Url+"/api/owners",pet, {headers} );*/
+    return this.http.post<TypePet>(this.Url+"add",pet, {headers} );
+  }
+  editPets(pet: PetDtoList){
+    const headers = new HttpHeaders( );
+    headers.append('Content-Type','application/json');
+    headers.append('Accept','application/json');
+    return this.http.post<Pet>(this.Url+pet.id,pet, {headers} );
   }
   deletePets(pet:Pet){
     const headers = new HttpHeaders( );
@@ -40,5 +46,12 @@ export class PetService {
     headers.append('Accept','application/json');
     let id: string  = pet.id.toString();
     return this.http.delete<Pet>(this.Url+id);
+  }
+  deletePetType(petType:TypePet){
+    const headers = new HttpHeaders( );
+    headers.append('Content-Type','application/json');
+    headers.append('Accept','application/json');
+    let id: string  = petType.id.toString();
+    return this.http.delete<TypePet>(this.Url+id);
   }
 }

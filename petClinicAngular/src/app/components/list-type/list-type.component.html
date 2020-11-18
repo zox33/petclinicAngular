@@ -1,0 +1,23 @@
+<div class="container container-fluid">
+    <table>
+        <thead>
+        <th>Id</th>
+        <th>Nombre</th>
+        </thead>
+        <tbody>
+        <tr  *ngFor="let type of Types">
+            <td >
+                {{type.id}}
+        </td>
+            <td>
+            {{type.name}}
+        </td>
+        <td>
+            <button type="button" (click) = borrar(type)>Eliminar</button>
+        </td>
+            </tr>
+        </tbody>
+    </table>
+    
+</div>
+<button type="button" class="btn btn-info" (click) = aniadir()>Añadir nueva tipo de mascota</button>

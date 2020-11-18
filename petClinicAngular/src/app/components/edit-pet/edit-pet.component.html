@@ -4,9 +4,9 @@
         <div class="form-group">
             <label for="id">Id</label>
             <input type="text" class="form-control" #id="ngModel" name="id"
-            [(ngModel)]="pet.id" required>
+            [(ngModel)]="pet.id" required readonly>
             <div  *ngIf="id.invalid  && (id.dirty || id.touched)" 
-            class="alert alert-danger">
+            class="alert alert-danger" >
                 Escriba el id de la mascota
             </div>
         </div>
@@ -23,38 +23,28 @@
 
         <div class="form-group">
             <label for="birthDate">BirthDate</label>
-            <input type="text" class="form-control" #birthDate="ngModel" name="birthDate"
-            [(ngModel)]="pet.birthDate" required>
-            <div   *ngIf="birthDate.invalid  && (birthDate.dirty || birthDate.touched)" 
-            class="alert alert-danger">
-                Escriba la fecha de nacimiento
-            </div>
+            <input type="date" class="form-control" formControlName="birthDate" id="birthDate" required>
+
         </div>
 
         <div class="form-group">
             <label for="typeId">Tipo</label>
-            <input type="text" class="form-control" #typeId="ngModel" name="typeId"
-            [(ngModel)]="pet.typeId" required>
-            <div   *ngIf="typeId.invalid && (typeId.dirty || typeId.touched)"
-            class="alert alert-danger">
-                Escriba el tipo
-            </div>
+            <ng-select formControlName="typeId" id="typeId" required>
+                <ng-option [value]="type.id" *ngFor="let type of typePets">{{type.name}}</ng-option>
+             </ng-select>
         </div>
 
         <div class="form-group">
-            <label for="ownerId">Owner</label>
-            <input type="text" class="form-control" #ownerId="ngModel" name="ownerId"
-            [(ngModel)]="pet.ownerId" required>
-            <div  *ngIf="ownerId.invalid && (ownerId.dirty || ownerId.touched)"
-            class="alert alert-danger">
-                Escriba el id del propietario
-            </div>
-        </div>
+            <label for="ownerId">Dueño</label>
+            <ng-select formControlName="ownerId" id="ownerId" required>
+                <ng-option *ngFor="let owner of ownerList" [value]="owner.id">{{owner.firstName}} {{owner.lastName}}</ng-option>
+             </ng-select>
 
+        </div>
 
         <div class="form-group">
             <div>
-                <button class="btn btn-primary" [disabled]="!formPet.valid" type="submit">Añadir Mascota</button>
+                <button class="btn btn-primary" [disabled]="!formPet.valid" type="submit">Editar Mascota</button>
             </div>
 
         </div>

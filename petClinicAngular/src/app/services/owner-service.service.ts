@@ -20,11 +20,24 @@ export class OwnerServiceService {
     const headers = new HttpHeaders( );
     headers.append('Content-Type','application/json');
     headers.append('Accept','application/json');
-    return this.http.post<Owner>(this.Url+"/api/owners",owner, {headers} );
+    return this.http.post<Owner>(this.Url+"/add",owner, {headers} );
   }
 
   getOwner(id:string): Observable<Owner>{
     return this.http.get<Owner>(this.Url+"/api/owners/"+id)
+  }
+  deleteOwner(owner:Owner){
+    const headers = new HttpHeaders( );
+    headers.append('Content-Type','application/json');
+    headers.append('Accept','application/json');
+    let id: string  = owner.id.toString();
+    return this.http.delete<Owner>(this.Url+id);
+  }
+  editOwner(owner:Owner){
+    const headers = new HttpHeaders( );
+    headers.append('Content-Type','application/json');
+    headers.append('Accept','application/json');
+    return this.http.post<Owner>(this.Url+owner.id,owner, {headers} );
   }
 
 
