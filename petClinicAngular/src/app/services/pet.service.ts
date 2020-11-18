@@ -9,8 +9,8 @@ import { TypePet } from '../models/type-pets.interface';
   providedIn: 'root'
 })
 export class PetService {
-  private Url:string="http://localhost:9005/pets/"
-  private UrlTypes:string="http://localhost:9005/types/"
+  private Url:string="http://localhost:9004/pets/"
+  private UrlTypes:string="http://localhost:9004/types/"
 
   constructor(private http:HttpClient) { }
 
@@ -22,11 +22,11 @@ export class PetService {
     return this.http.get<TypePet[]>(this.UrlTypes);
   }
 
-  addPets(pet: NewPetDto){
+  addPet(pet: NewPetDto){
     const headers = new HttpHeaders( );
     headers.append('Content-Type','application/json');
     headers.append('Accept','application/json');
-    return this.http.post<Pet>(this.Url,pet, {headers} );
+    return this.http.post<Pet>(this.Url+"add",pet, {headers} );
   }
   editPets(){
     /*const headers = new HttpHeaders( );

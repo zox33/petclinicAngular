@@ -19,8 +19,9 @@ import { VetService } from './services/vet.service';
 import { ListPetComponent } from './components/list-pet/list-pet.component';
 import { EditPetComponent } from './components/edit-pet/edit-pet.component';
 import { AddPetComponent } from './components/add-pet/add-pet.component';
-
+import { NgSelectModule } from '@ng-select/ng-select';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PetService } from './services/pet.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     ListPetComponent,
     EditPetComponent,
     AddPetComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -44,9 +44,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgSelectModule
+
   ],
-  providers: [OwnerServiceService, VetService],
+  providers: [OwnerServiceService, VetService, PetService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

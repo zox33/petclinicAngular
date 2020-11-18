@@ -26,7 +26,7 @@ export class EditPetComponent implements OnInit {
     this.pet.birthDate == formPet.value.birthDate;
     this.pet.typeId == formPet.value.typeId;
     this.pet.ownerId == formPet.value.ownerId;
-    this.petService.addPets(this.pet);
+    this.petService.addPet(this.pet);
 
   }
 

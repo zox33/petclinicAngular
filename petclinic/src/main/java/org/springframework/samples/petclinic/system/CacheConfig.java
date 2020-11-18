@@ -39,21 +39,5 @@ class CacheConfig {
 	        };
 	    }
 	   
-	   
-	       @Bean
-	       public CorsConfigurationSource  corsFilter() {
-	           CorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-	           CorsConfiguration config = new CorsConfiguration();
-	           config.addAllowedOrigin("http://localhost:4200");
-	           config.addAllowedMethod(HttpMethod.DELETE);
-	           config.addAllowedMethod(HttpMethod.GET);
-	           config.addAllowedMethod(HttpMethod.OPTIONS);
-	           config.addAllowedMethod(HttpMethod.PUT);
-	           config.addAllowedMethod(HttpMethod.POST);
-	           
-	           ((UrlBasedCorsConfigurationSource) source).registerCorsConfiguration("/**", config);
-	           
-	           return  source;
-	       }
 	
 }
