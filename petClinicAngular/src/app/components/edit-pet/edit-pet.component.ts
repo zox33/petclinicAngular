@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { OwnerList } from 'src/app/models/owner.interface';
+import { PetDtoList } from 'src/app/models/pet.interface';
 import { TypePet } from 'src/app/models/type-pets.interface';
 import { OwnerServiceService } from 'src/app/services/owner-service.service';
 import { PetService } from 'src/app/services/pet.service';
@@ -12,36 +13,42 @@ import { PetService } from 'src/app/services/pet.service';
   styleUrls: ['./edit-pet.component.scss']
 })
 export class EditPetComponent implements OnInit {
-  public pet;
-  constructor(private route: ActivatedRoute, private petService:PetService,private ownerService:OwnerServiceService,private router:Router) { }
-  public idL;
+  pet:PetDtoList;
   typePets:TypePet[]=[];
   ownerList:OwnerList[]=[];
+  public idL;
+  public idV;
+  //formulario
+  form: FormGroup = new FormGroup ({ 
+    nombre: new FormControl()
+    ,birthDate: new FormControl()
+    ,typeId: new FormControl()
+    ,ownerId: new FormControl()});
+
+  constructor(private petService:PetService, private formBuilder: FormBuilder, private router:Router, private ownerService:OwnerServiceService,private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.getTypes();
     this.getOwners();
     this.idL = this.route.queryParams.subscribe(params =>{
-      this.pet = {
-        id:params['idE'],
-        name:"",
-        birthDate:"",
-        typeId:"",
-        ownerId:""
-      }
+      this.idV = params['idE']
     });
-    
+    this.form = this.formBuilder.group({
+      id:[this.idV,Validators.required],
+      name: ["",Validators.required],
+      birthDate: [Date(), Validators.required],
+      typeId: [2, Validators.required],
+      ownerId: [1,Validators.required],
+    });
   }
-  onSubmit(formPet:NgForm){
-    this.pet.id == formPet.value.id;
-    this.pet.name == formPet.value.name;
-    this.pet.birthDate == formPet.value.birthDate;
-    this.pet.typeId == formPet.value.typeId;
-    this.pet.ownerId == formPet.value.ownerId;
-    this.petService.editPets(this.pet);
-    this.router.navigate(["/"]);
 
+  onSubmit(formulario:FormGroup):void{
+    this.pet = new PetDtoList(this.form.get('id').value,this.form.get('name').value, this.form.get('birthDate').value, this.form.get('typeId').value,this.form.get('ownerId').value)
+    this.petService.editPets(this.pet).subscribe(add=>{
+        
+    });
   }
+
   getTypes(){
     this.petService.getTypesPets().subscribe(typ=>{
       this.typePets=typ;

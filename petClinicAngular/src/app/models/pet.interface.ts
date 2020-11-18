@@ -4,6 +4,7 @@ export interface Pet {
     birthDate: Date;
     typeId: number;
     ownerId: number
+    
 }
 
 export class PetDtoList {

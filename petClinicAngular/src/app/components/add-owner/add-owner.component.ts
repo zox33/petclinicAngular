@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Owner } from 'src/app/models/owner.interface';
+import { Owner, OwnerDto } from 'src/app/models/owner.interface';
 import { OwnerServiceService } from 'src/app/services/owner-service.service';
 
 
@@ -12,7 +12,7 @@ import { OwnerServiceService } from 'src/app/services/owner-service.service';
 })
 export class AddOwnerComponent implements OnInit {
 
-  owner:Owner;
+  owner:OwnerDto;
   //formulario
   form: FormGroup = new FormGroup ({ 
     firstName: new FormControl()
@@ -26,7 +26,7 @@ export class AddOwnerComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      fisrtName: ["",Validators.required],
+      firstName: ["",Validators.required],
       lastName: ["",Validators.required],
       address: ["",Validators.required],
       city: ["",Validators.required],
@@ -35,7 +35,7 @@ export class AddOwnerComponent implements OnInit {
   }
 
   onSubmit(formulario:FormGroup):void{
-    this.owner = new Owner(this.form.get('firstName').value,this.form.get('lastName').value,this.form.get('address').value,this.form.get('city').value,this.form.get('telephone').value)
+    this.owner = new OwnerDto(this.form.get('firstName').value,this.form.get('lastName').value,this.form.get('address').value,this.form.get('city').value,this.form.get('telephone').value)
     this.ownerService.addOwner(this.owner).subscribe(add=>{
         this.router.navigate(['/owners']);
     });
