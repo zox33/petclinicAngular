@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { TypePet } from '../models/type-pets.interface';
-import { PetService } from '../services/pet.service';
+import { NewPetDto } from 'src/app/models/pet.interface';
+import { TypePet } from 'src/app/models/type-pets.interface';
+import { PetService } from 'src/app/services/pet.service';
+
 
 @Component({
   selector: 'app-list-type',
@@ -27,5 +29,8 @@ export class ListTypeComponent implements OnInit {
       }
       );
    }
+   aniadir(){
+    this.router.navigate(["/addTypePet"]);
+  }
 
 }

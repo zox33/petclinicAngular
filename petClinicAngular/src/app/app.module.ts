@@ -26,6 +26,9 @@ import { ListTypeComponent } from './list-type/list-type.component';
 import { AddTypeComponent } from './components/add-type/add-type.component';
 import { AddOwnerComponent } from './components/add-owner/add-owner.component';
 import { EditOwnerComponent } from './components/edit-owner/edit-owner.component';
+import { ListVetComponent } from './components/list-vet/list-vet.component';
+import { AddVetComponent } from './components/add-vet/add-vet.component';
+import { EditVetComponent } from './components/edit-vet/edit-vet.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +48,9 @@ import { EditOwnerComponent } from './components/edit-owner/edit-owner.component
     AddTypeComponent,
     AddOwnerComponent,
     EditOwnerComponent,
+    ListVetComponent,
+    AddVetComponent,
+    EditVetComponent,
   ],
   imports: [
     BrowserModule,

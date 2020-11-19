@@ -1,0 +1,29 @@
+<div class="container container-fluid">
+    <table>
+        <thead>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        </thead>
+        <tbody>
+        <tr  *ngFor="let vet of Vets">
+            <td >
+                {{vet.id}}
+        </td>
+            <td>
+            {{vet.firstName}}
+        </td>
+        <td>
+            {{vet.lastName}}
+        </td>
+        <td>
+            <button type="button" (click) = borrar(vet)>Eliminar</button>
+        </td>
+        <td>
+            <button type="button" (click) = editar(vet)>Editar</button>
+        </td>
+            </tr>
+        </tbody>
+    </table>
+    <button type="button" class="btn btn-info" (click) = aniadir()>Añadir nueva Mascota</button>
+</div>
