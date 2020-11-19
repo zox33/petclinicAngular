@@ -37,7 +37,7 @@ export class OwnerServiceService {
     const headers = new HttpHeaders( );
     headers.append('Content-Type','application/json');
     headers.append('Accept','application/json');
-    return this.http.post<Owner>(this.Url+owner.id,owner, {headers} );
+    return this.http.put<Owner>(this.Url+owner.id,owner, {headers} );
   }
 
 

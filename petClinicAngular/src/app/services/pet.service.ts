@@ -38,7 +38,7 @@ export class PetService {
     const headers = new HttpHeaders( );
     headers.append('Content-Type','application/json');
     headers.append('Accept','application/json');
-    return this.http.post<Pet>(this.Url+pet.id,pet, {headers} );
+    return this.http.put<Pet>(this.Url+pet.id,pet, {headers} );
   }
   deletePets(pet:Pet){
     const headers = new HttpHeaders( );

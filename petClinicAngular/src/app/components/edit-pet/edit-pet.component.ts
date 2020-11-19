@@ -45,7 +45,8 @@ export class EditPetComponent implements OnInit {
   onSubmit(formulario:FormGroup):void{
     this.pet = new PetDtoList(this.form.get('id').value,this.form.get('name').value, this.form.get('birthDate').value, this.form.get('typeId').value,this.form.get('ownerId').value)
     this.petService.editPets(this.pet).subscribe(add=>{
-        
+      this.router.navigate(['/']);
+
     });
   }
 
