@@ -31,7 +31,7 @@ export class VetService {
     const headers = new HttpHeaders( );
     headers.append('Content-Type','application/json');
     headers.append('Accept','application/json');
-    return this.http.post<addVet>(this.Url+vet.id,vet, {headers} );
+    return this.http.put<addVet>(this.Url+vet.id,vet, {headers} );
   }
 
 }
